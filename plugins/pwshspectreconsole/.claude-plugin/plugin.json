@@ -1,0 +1,12 @@
+{
+  "name": "pwshspectreconsole",
+  "version": "1.0.0",
+  "description": "Correct, tested patterns for PwshSpectreConsole: tables, panels, layouts, terminal images (Sixel/blocks/braille), progress, live displays, prompts, charts and markup.",
+  "author": {
+    "name": "dudhasch"
+  },
+  "homepage": "https://github.com/dudhasch/pwshspectreconsole-skills",
+  "repository": "https://github.com/dudhasch/pwshspectreconsole-skills",
+  "license": "MIT",
+  "keywords": ["powershell", "pwsh", "spectre-console", "tui", "console", "terminal", "sixel"]
+}

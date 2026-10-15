@@ -1,0 +1,20 @@
+{
+  "name": "pwshspectreconsole-skills",
+  "owner": {
+    "name": "dudhasch"
+  },
+  "metadata": {
+    "description": "Claude Code skills for building PowerShell console UIs with PwshSpectreConsole.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "pwshspectreconsole",
+      "source": "./plugins/pwshspectreconsole",
+      "description": "Correct, tested patterns for PwshSpectreConsole: tables, panels, layouts, terminal images (Sixel/blocks/braille), progress, live displays, prompts, charts and markup.",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["powershell", "pwsh", "spectre-console", "tui", "console", "terminal", "sixel"]
+    }
+  ]
+}

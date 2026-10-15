@@ -1,0 +1,39 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PwshSpectreConsole
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module PwshSpectreConsole -Scope CurrentUser -MinimumVersion 2.6.3 -Force
+          Install-Module ThreadJob -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+          Get-Module PwshSpectreConsole -ListAvailable | Format-Table Name, Version
+
+      - name: Run tests
+        shell: pwsh
+        env:
+          TERM: xterm-256color
+        run: ./tests/Invoke-Tests.ps1
+
+  validate-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON manifests
+        run: |
+          python3 -m json.tool .claude-plugin/marketplace.json > /dev/null
+          python3 -m json.tool plugins/pwshspectreconsole/.claude-plugin/plugin.json > /dev/null
